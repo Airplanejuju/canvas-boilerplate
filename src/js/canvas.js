@@ -28,11 +28,12 @@ addEventListener('resize', () => {
 
 // Objects
 class Object {
-  constructor(x, y, radius, color) {
-    this.x = x
-    this.y = y
-    this.radius = radius
-    this.color = color
+  constructor(x, y, dy, radius, color) {
+    this.x = x;
+    this.y = y;
+    this.dy = dy;
+    this.radius = radius;
+    this.color = color;
   }
 
   draw() {
@@ -44,7 +45,17 @@ class Object {
   }
 
   update() {
-    this.draw()
+    this.y += this.dy;
+    if (this.y + this.radius > canvas.height)
+    {
+     this.dy = -this.dy;
+    }
+    else 
+    {
+      this.dy += 1;
+    }
+  
+    this.draw();
   }
 }
 
@@ -58,7 +69,7 @@ function init() {
   //   // objects.push()
   // }
 
-  ball = new Object(canvas.width / 2, canvas.height / 2, 30, 'red');
+  ball = new Object(canvas.width / 2, canvas.height / 2, 1, 30, 'red');
 
   console.log(ball);
 }
