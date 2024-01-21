@@ -1,4 +1,4 @@
-import './utils'
+// import utils from './utils'
 
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
@@ -49,13 +49,18 @@ class Object {
 }
 
 // Implementation
-let objects
+// let objects
+var ball;
 function init() {
-  objects = []
+  // objects = []
 
-  for (let i = 0; i < 400; i++) {
-    // objects.push()
-  }
+  // for (let i = 0; i < 400; i++) {
+  //   // objects.push()
+  // }
+
+  ball = new Object(canvas.width / 2, canvas.height / 2, 30, 'red');
+
+  console.log(ball);
 }
 
 // Animation Loop
@@ -63,10 +68,12 @@ function animate() {
   requestAnimationFrame(animate)
   c.clearRect(0, 0, canvas.width, canvas.height)
 
-  c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y)
+  // c.fillText('HTML CANVAS BOILERPLATE', mouse.x, mouse.y)
   // objects.forEach(object => {
   //  object.update()
   // })
+
+  ball.update();
 }
 
 init()
